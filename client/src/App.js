@@ -5,7 +5,7 @@ import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie';
 
-export default class App extends Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -14,18 +14,22 @@ export default class App extends Component {
   }
 
   addToSavedList = movie => {
-    const savedList = this.state.savedList;
-    savedList.push(movie);
+    const savedList = this.state.savedList.length > 0
+    && this.state.savedList.some(x => x.id === movie.id ) ? 
+    this.state.savedList.filter(x => x.id !== movie.id ) : [...this.state.savedList, movie]
+    
     this.setState({ savedList });
   };
 
   render() {
     return (
       <div>
-        <SavedList list={this.state.savedList} />
+        <SavedList list={this.state.savedList}  />
         <Route exact path="/" component={MovieList} />
-        <Route path="/movies/:id" component={Movie} />
+        <Route path="/movies/:id" render={props => <Movie {...props} addToSavedList={this.addToSavedList} />} />
       </div>
     );
   }
 }
+
+export default App;
