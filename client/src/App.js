@@ -23,7 +23,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <SavedList list={this.state.savedList}  />
         <Route exact path="/" component={MovieList} />
         <Route path="/movies/:id" render={props => <Movie {...props} addToSavedList={this.addToSavedList} />} />

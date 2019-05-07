@@ -25,8 +25,9 @@ export default class Movie extends Component {
 
   fetchMovie = id => {
     axios
-      .get(`http://localhost:5000/api/movies/${id}`)
+      .get(`http://www.omdbapi.com/?apikey=af86892e&i=${id}`)
       .then(response => {
+        console.table(response)
         this._isMounted && this.setState(() => ({ movie: response.data }));
       })
       .catch(error => {
@@ -52,24 +53,21 @@ export default class Movie extends Component {
       return <div>Loading movie information...</div>;
     }
 
-    const { title, director, metascore, stars } = this.state.movie;
+    const { Title, Year, Metascore, Actors, Poster, Rated } = this.state.movie;
     return (
-      <div className="save-wrapper">
-        <div className="movie-card">
-          <h2>{title}</h2>
-          <div className="movie-director">
-            Director: <em>{director}</em>
-          </div>
+      <div className="save-wrapper" >
+        <div className="movie-card" style={{
+        background: `url(${Poster})`,
+        backgroundSize: 'cover'         
+}}>
+          <h2>{Title}</h2>
+          <h3>Year: {Year}</h3>
+          <h3>Rated: {Rated}</h3>
           <div className="movie-metascore">
-            Metascore: <strong>{metascore}</strong>
+            Metascore: <strong>{Metascore}</strong>
           </div>
-          <h3>Actors</h3>
-
-          {stars.map(star => (
-            <div key={star} className="movie-star">
-              {star}
-            </div>
-          ))}
+          <h3>Starring:</h3>
+          {Actors}
         </div>
         <div className="save-button" onClick={this.saveMovie}>{this.state.isSaved ? 'Remove' : 'Save'}</div>
       </div>
