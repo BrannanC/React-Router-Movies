@@ -47,7 +47,7 @@ export default class MovieList extends Component {
         ))}
       </div>
       <form onSubmit={this.handleSubmit}>
-        <input 
+        <input required
           type="text" 
           placeholder="Search..." 
           onChange={this.handleChange}
