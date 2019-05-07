@@ -11,13 +11,15 @@ body {
 }
 
 .App {
-  margin: 0 auto;
+  margin: 60px auto;
   display: flex;
 }
 
 .App form {
   width: 10%;
-  position: sticky;
+  position: fixed;
+  top: 0;
+  left: 50%;
   top: 1rem;
   height: 50px;
 }
@@ -43,6 +45,7 @@ body {
   position: relative;
   margin: 1rem ;
   width: 20%;
+  min-width: 200px;
   height: 320px;
   text-align: center;
 }
@@ -143,3 +146,20 @@ body {
   background-color: rgba(135, 206, 250, 0.514);
 }
 
+@media(max-width: 800px){
+  .movie-list {
+    width: 70%;
+  }
+
+  .saved-list {
+    width: 30%;
+  }
+
+  .App form {
+    left: 2%;
+  }
+
+  input {
+    width: 50vw;
+  }
+}

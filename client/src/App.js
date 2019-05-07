@@ -15,8 +15,8 @@ class App extends Component {
 
   addToSavedList = movie => {
     const savedList = this.state.savedList.length > 0
-    && this.state.savedList.some(x => x.id === movie.id ) ? 
-    this.state.savedList.filter(x => x.id !== movie.id ) : [...this.state.savedList, movie]
+    && this.state.savedList.some(x => x.imdbID === movie.imdbID) ? 
+    this.state.savedList.filter(x => x.imdbID!== movie.imdbID) : [...this.state.savedList, movie]
     
     this.setState({ savedList });
   };
@@ -26,7 +26,8 @@ class App extends Component {
       <div className="App">
         <SavedList list={this.state.savedList}  />
         <Route exact path="/" component={MovieList} />
-        <Route path="/movies/:id" render={props => <Movie {...props} addToSavedList={this.addToSavedList} />} />
+        <Route path="/movies/:id" render={props => <Movie {...props} 
+          addToSavedList={this.addToSavedList} savedList={this.state.savedList} />} />
       </div>
     );
   }

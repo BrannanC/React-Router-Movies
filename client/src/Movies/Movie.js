@@ -28,7 +28,10 @@ export default class Movie extends Component {
       .get(`http://www.omdbapi.com/?apikey=af86892e&i=${id}`)
       .then(response => {
         console.table(response)
-        this._isMounted && this.setState(() => ({ movie: response.data }));
+        this._isMounted && this.setState(() => ({ 
+          movie: response.data,
+          isSaved: this.props.savedList.some(x => x.imdbID === response.data.imdbID)
+        }));
       })
       .catch(error => {
         console.error(error);
