@@ -50,6 +50,20 @@ const movies = [
 		metascore: 89,
 		stars: ['Kurt Russell', 'Bill Paxton', 'Sam Elliot'],
 	},
+	{
+		id: 6,
+		title: 'Tombstone',
+		director: 'George P. Cosmatos',
+		metascore: 89,
+		stars: ['Kurt Russell', 'Bill Paxton', 'Sam Elliot'],
+	},
+	{
+		id: 7,
+		title: 'Tombstone',
+		director: 'George P. Cosmatos',
+		metascore: 89,
+		stars: ['Kurt Russell', 'Bill Paxton', 'Sam Elliot'],
+	},
 ];
 
 app.get('/api/movies', (req, res) => {
