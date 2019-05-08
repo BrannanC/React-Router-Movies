@@ -18,7 +18,7 @@ export default class MovieList extends Component {
   handleChange = e => {
     this.setState({
       search: e.target.value
-    })
+    }, () => !this.state.search && this.fetchMovies('all'))
   }
 
   handleSubmit = e => {
