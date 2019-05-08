@@ -39,7 +39,8 @@ export default class Movie extends Component {
   };
   // Uncomment this code when you're ready for the stretch problems
   componentDidUpdate(prop, prev){
-    if(prev.movie && prop.match.params.id && prop.match.params.id !== prev.movie.id){
+    console.log(prop)
+    if(this.props.match.params.id !== prop.match.id){
       this.fetchMovie(this.props.match.params.id);
     }
   }
